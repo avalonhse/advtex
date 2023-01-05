@@ -5,8 +5,8 @@ REPO_DIR="$1"
 SCENE_ID="$2"
 RUN_TRAIN="$3"
 
-DATA_DIR=${REPO_DIR}/dataset
-EXP_DIR=${REPO_DIR}/experiments/uofi
+DATA_DIR=${PWD}/dataset
+EXP_DIR=${PWD}/experiments/uofi
 
 MRF_BIN=${REPO_DIR}/advtex_init_align/tex_init/tex_init
 

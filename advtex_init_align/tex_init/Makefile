@@ -1,3 +1,5 @@
+
+
 CXX=g++
 ifeq ($(DEBUG), 1)
 OFLAGS=-g
@@ -5,9 +7,11 @@ else
 OFLAGS=-O3 -fopenmp
 endif
 
-THIRDPARTY_DIR=/home/hoanglv/hoang/3d/advtex_init_align/third_parties
+THIRDPARTY_DIR=/home/hoanglv/hoang/3d/third_parties
+
+#THIRDPARTY_DIR=/home/hoanglv/hoang/3d/advtex_init_align/third_parties
 # e.g., CUDA_ROOT=/usr/local/cuda-11.1
-CUDA_ROOT=/usr/local/cuda-11.1
+CUDA_ROOT=/usr/local/cuda-11.3
 
 CXXFLAGS=-DWHICH_FUNC=1 -pthread -std=c++14 -DCGAL_EIGEN3_ENABLED -DWHICH_FUNC=1 \
 		 -I. -I./mesh/include -I./project/include -I./linear-algebra/include -I./deps -I./deps/rectangle-bin-pack/include \
@@ -16,8 +20,9 @@ CXXFLAGS=-DWHICH_FUNC=1 -pthread -std=c++14 -DCGAL_EIGEN3_ENABLED -DWHICH_FUNC=1
 		 -I/usr/include/suitesparse \
 		 -I${THIRDPARTY_DIR}/boost_1_75_0/build/include \
 		 -I${THIRDPARTY_DIR}/CGAL-5.1.5/install/include
+
 LDPATH=-L${CUDA_ROOT}/lib64
-LDFLAGS=-lpng -lmetis -lcholmod -lm -pthread -lgomp -lblas -lcudart -lcublas  -lumfpack -lamd -lsuitesparseconfig
+LDFLAGS=-lpng -lmetis -lcholmod -lm -pthread -lgomp -lblas -lcudart -lcublas -lumfpack -lamd -lsuitesparseconfig
 
 SRC_FILES := $(wildcard ./*.cpp)
 SRC_FILES+=$(wildcard mesh/src/*.cpp)
